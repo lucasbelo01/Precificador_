@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precificador 4.0</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="appContainer">
+        <header class="app-header">
+            <div class="app-header-title">
+                <div class="product-image-placeholder"></div>
+                <h1>PRECIFICADOR 4.0</h1>
+            </div>
+            <button id="themeToggle" class="theme-toggle-button">Alternar Tema</button>
+        </header>
+
+        <section class="calc-section">
+            <div class="input-group highlight-bg">
+                <label for="exposureType">Tipo de Exposição do Anúncio:</label>
+                <select id="exposureType">
+                    <option value="Offline">Venda por Fora</option>
+                   <option value="Classico">Exposição Atual (Clássico)</option>
+                    <option value="Premium">Premium (Mercado Livre)</option>
+                    <option value="Shopee">Shopee</option>
+                    
+                </select>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Valor De Venda</label>
+                    <input type="number" id="saleValue" value="" step="0.01" placeholder="0.00">
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Frete (-)</label>
+                    <input type="number" id="shippingCost" value="" step="0.01" placeholder="0.00">
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Custo (-)</label>
+                    <input type="number" id="productCost" value="" step="0.01" placeholder="0.00">
+                </div>
+            </div>
+            
+            <div class="input-row align-items-center">
+                <div class="input-group">
+                    <label>Imposto (-)</label>
+                    <div class="percentage-display">
+                        <input type="number" id="taxValueInput" value="" step="0.01" placeholder="0.00">%
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-row align-items-center" id="commissionRow">
+                <div class="input-group full-width-input">
+                    <label>Tarifa De Venda (-)</label>
+                    <span id="fixedFeeDisplay" class="fixed-fee-text">+ Tarifa Fixa R$ 0.00</span>
+                    <div id="commissionInputContainer" class="input-with-toggle">
+                        <input type="number" id="commissionValueInput" value="" step="0.01" placeholder="0.00">
+                        <span id="commissionTypeToggle" class="toggle-button" data-type="value">R$</span>
+                    </div>
+                    <div id="commissionDisplayContainer" class="commission-display">
+                        <span id="commissionValueDisplay" class="commission-value-display">R$ 0.00</span>
+                        <span id="commissionPercentageDisplay" class="commission-percentage-display">0.00%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="promoDiscount">Desconto Promoção (%):</label>
+                    <input type="number" id="promoDiscount" value="" step="0.01" placeholder="0.00">
+                </div>
+            </div>
+
+            <div class="result-box">
+                <p>Margem De Contribuição (=)</p>
+                <p class="highlight" id="marginValue">R$ 0.00</p>
+                <p class="highlight-percentage" id="marginPercentage">0.00%</p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="developer-balloon">Desenvolvido por Lucas Belo</div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
