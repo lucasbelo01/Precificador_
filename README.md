@@ -2,7 +2,7 @@
 
 Este projeto foi desenvolvido como parte da unidade curricular Usabilidade, Desenvolvimento Web, Mobile e Jogos (UDWEJ), com tema livre, com foco em criar uma ferramenta prática e eficiente para vendedores de diferentes níveis de experiência.
 
-📌 Sobre nosso Projeto:
+📌 Sobre meu Projeto:
 O objetivo deste projeto é fornecer uma ferramenta simples e eficaz para o cálculo de margens de lucro, voltada para vendedores que buscam melhorar o controle sobre suas vendas e lucros. A ferramenta calcula automaticamente a margem de contribuição com base no valor de venda e nos custos inseridos, ajudando o vendedor a tomar decisões mais assertivas sobre preços e lucros.
 
 A ferramenta foi desenvolvida com foco em novos vendedores e vendedores experientes que enfrentam dificuldades em calcular corretamente suas margens de lucro ou na retenção de lucro em suas vendas. Além disso, a ferramenta já está configurada para atender marketplaces, levando em consideração:
@@ -31,5 +31,6 @@ Preencha os campos: Insira o valor de venda, custo total, taxa de imposto, tarif
 Veja o resultado: O sistema calculará automaticamente a margem de contribuição e exibirá o resultado na tela.
 Interatividade em tempo real: Os valores da margem de lucro são atualizados conforme você altera os dados inseridos.
 
-👥 Desenvolvedore:
+👥 Desenvolvedor:
 Lucas Belo Carvalho
+
