@@ -1,441 +1,173 @@
-/* --- Reset Básico e Box-Sizing --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* --- Estilos Globais e do Body --- */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
-    padding: 15px;
-}
-
-/* --- Contêiner Principal do Aplicativo --- */
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-/* --- Cabeçalho do Aplicativo --- */
-.app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.app-header-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-grow: 1;
-}
-
-.app-header h1 {
-    font-size: 24px;
-    margin: 0;
-    color: #007bff;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* Placeholder para a imagem do produto */
-.product-image-placeholder {
-    width: 60px;
-    height: 60px;
-    border-radius: 4px;
-    flex-shrink: 0;
-    background-image: url('Ícone 1.png');
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-}
-
-.header-social-links {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.header-social-links .social-icon {
-    width: 24px;
-    height: 24px;
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition: filter 0.3s, opacity 0.3s;
-}
-
-.header-social-links a:hover .social-icon {
-    filter: grayscale(0%);
-    opacity: 1;
-}
-
-.theme-toggle-button {
-    position: static;
-    background-color: #007bff;
-    color: white;
-    padding: 6px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s, color 0.3s;
-    white-space: nowrap;
-}
-
-.theme-toggle-button:hover {
-    background-color: #0056b3;
-}
-
-/* --- Seção de Inputs do Calculador --- */
-.calc-section {
-    margin-top: 20px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.input-group label {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.input-group input[type="number"],
-.input-group select,
-.input-group input[type="text"] {
-    width: 100%;
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    color: #333;
-    -moz-appearance: textfield;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.input-with-toggle {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-}
-
-.input-with-toggle input {
-    flex-grow: 1;
-}
-
-.toggle-button {
-    cursor: pointer;
-    background-color: #e0e0e0;
-    color: #666;
-    border-radius: 4px;
-    padding: 8px 10px;
-    font-weight: bold;
-    transition: background-color 0.2s, color 0.2s;
-    user-select: none;
-    font-size: 14px;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-.toggle-button:hover {
-    background-color: #ccc;
-}
-
-.percentage-display-value {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 14px;
-    color: #666;
-    flex-shrink: 0;
-    width: 100%;
-}
-
-.percentage-display-value input {
-    text-align: right;
-    width: 100%;
-    padding-right: 2px;
-}
-
-/* Specific styles for highlighted input group */
-.input-group.highlight-bg {
-    background-color: #e0f2f7;
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-/* Input readonly styling */
-.input-group input[readonly] {
-    background-color: #eee;
-    cursor: not-allowed;
-}
-
-/* Hide number input arrows */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.input-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.input-row .input-group {
-    flex: 1;
-    margin-bottom: 0;
-    min-width: 120px;
-}
-
-.quantity-group {
-    max-width: 100px;
-    flex-grow: 0;
-}
-
-.fixed-fee-text {
-    font-size: 12px;
-    color: #888;
-    white-space: nowrap;
-    align-self: flex-start;
-    margin-top: -3px;
-}
-
-/* Estilos para o novo display da tarifa de venda (Modos ML e Shopee) */
-.commission-display {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-    width: 100%;
-}
-
-.commission-value-display {
-    font-size: 14px;
-    color: #333;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 8px 12px;
-    width: 100%;
-    text-align: right;
-}
-
-.commission-percentage-display {
-    font-size: 14px;
-    color: #666;
-    white-space: nowrap;
-    margin-right: 12px;
-}
-
-/* Esconde o display de comissão do Mercado Livre (Offline) */
-.commission-display-hidden {
-    display: none !important;
-}
-
-/* Esconde o input de comissão para os modos ML e Shopee */
-.commission-input-hidden {
-    display: none !important;
-}
-
-/* --- Caixa de Resultado (Margem de Contribuição) --- */
-.result-box {
-    text-align: center;
-    background-color: #e6f7ff;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 25px;
-    border: 1px solid #b3e0ff;
-}
-
-.result-box p {
-    margin: 0;
-    font-size: 15px;
-    color: #555;
-}
-
-.result-box .highlight {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007bff;
-    margin-top: 5px;
-}
-
-.result-box .highlight-percentage {
-    font-size: 18px;
-    color: #007bff;
-    font-weight: bold;
-    margin-top: 2px;
-}
-
-/* Cores para margem negativa/positiva */
-.negative {
-    color: #dc3545 !important;
-}
-
-.positive {
-    color: #28a745 !important;
-}
-
-/* --- Rodapé --- */
-footer {
-    text-align: center;
-    margin-top: 25px;
-}
-
-/* Novo estilo para o balão do desenvolvedor */
-.developer-balloon {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 12px;
-    display: inline-block;
-}
-
-/* --- Seção de Redes Sociais no Rodapé --- */
-.social-links {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.social-links a {
-    color: #007bff;
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-/* --- Estilos do Modo Escuro --- */
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-}
-
-body.dark-mode .container {
-    background-color: #2b2b2b;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-}
-
-body.dark-mode .app-header h1 {
-    color: #6cbfff;
-}
-
-body.dark-mode .product-image-placeholder {
-    border-color: #777;
-    background-color: #2b2b2b;
-    background-image: url('Ícone 1.png');
-}
-
-body.dark-mode .input-group label {
-    color: #bbb;
-}
-
-body.dark-mode .input-group input[type="number"],
-body.dark-mode .input-group select,
-body.dark-mode .input-group input[type="text"] {
-    background-color: #3a3a3a;
-    border-color: #555;
-    color: #e0e0e0;
-}
-
-body.dark-mode .input-group input[readonly] {
-    background-color: #555;
-}
-
-body.dark-mode .input-group.highlight-bg {
-    background-color: #3b4e5a;
-}
-
-body.dark-mode .fixed-fee-text {
-    color: #bbb;
-}
-
-body.dark-mode .result-box {
-    background-color: #3b4e5a;
-    border-color: #4c687a;
-}
-
-body.dark-mode .result-box p {
-    color: #ccc;
-}
-
-body.dark-mode .result-box .highlight,
-body.dark-mode .result-box .highlight-percentage {
-    color: #6cbfff;
-}
-
-body.dark-mode .result-box .highlight.negative {
-    color: #ff7043 !important;
-}
-body.dark-mode .result-box .highlight.positive {
-    color: #66bb6a !important;
-}
-
-body.dark-mode .developer-balloon {
-    background-color: #3b4e5a;
-}
-
-body.dark-mode .social-links a {
-    color: #6cbfff;
-}
-
-body.dark-mode .social-links a:hover {
-    color: #5aaad4;
-}
-
-body.dark-mode .theme-toggle-button {
-    background-color: #6cbfff;
-}
-body.dark-mode .theme-toggle-button:hover {
-    background-color: #5aaad4;
-}
-
-body.dark-mode .commission-value-display {
-    background-color: #3a3a3a;
-    border-color: #555;
-    color: #e0e0e0;
-}
-
-body.dark-mode .toggle-button {
-    background-color: #555;
-    color: #e0e0e0;
-}
-
-body.dark-mode .toggle-button:hover {
-    background-color: #666;
-}
+// --- Definição das Taxas de Marketplaces ---
+const MARKETPLACE_FEES = {
+    'Classico': {
+        commission_percentage: 12,
+        fixed_fee: 6.75
+    },
+    'Premium': {
+        commission_percentage: 17,
+        fixed_fee: 6.75
+    },
+    'Shopee': {
+        commission_percentage: 20,
+        fixed_fee: 4.00
+    },
+    'Offline': {
+        commission_percentage: 0,
+        fixed_fee: 0
+    }
+};
+
+// --- Função Principal de Inicialização ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- 1. Referências aos Elementos do DOM ---
+    const exposureTypeSelect = document.getElementById('exposureType');
+    const saleValueInput = document.getElementById('saleValue');
+    const shippingCostInput = document.getElementById('shippingCost');
+    const unitCostInput = document.getElementById('unitCost');
+    const quantityInput = document.getElementById('quantity');
+    
+    // Referências para o campo de imposto
+    const taxInput = document.getElementById('taxInput');
+    const taxTypeToggle = document.getElementById('taxTypeToggle');
+    const taxValueDisplay = document.getElementById('taxValueDisplay');
+
+    const commissionInput = document.getElementById('commissionInput');
+    const commissionTypeToggle = document.getElementById('commissionTypeToggle');
+    const fixedFeeDisplay = document.getElementById('fixedFeeDisplay');
+    
+    const commissionDiscountInput = document.getElementById('commissionDiscount');
+    const promoDiscountInput = document.getElementById('promoDiscount');
+    const marginValueDisplay = document.getElementById('marginValue');
+    const marginPercentageDisplay = document.getElementById('marginPercentage');
+    const themeToggleButton = document.getElementById('themeToggle');
+
+    const commissionInputContainer = document.getElementById('commissionInputContainer');
+    const commissionDisplayContainer = document.getElementById('commissionDisplayContainer');
+    const commissionValueDisplay = document.getElementById('commissionValueDisplay');
+    const commissionPercentageDisplay = document.getElementById('commissionPercentageDisplay');
+    
+    // Variáveis de estado para o tipo de entrada (R$ ou %)
+    let taxInputType = 'percent';
+    let commissionInputType = 'percent';
+
+    // --- 2. Gerenciamento de Tema ---
+    let isDarkMode = JSON.parse(localStorage.getItem('isDarkMode')) || false;
+
+    function applyTheme() {
+        document.body.classList.toggle('dark-mode', isDarkMode);
+    }
+
+    function toggleTheme() {
+        isDarkMode = !isDarkMode;
+        localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+        applyTheme();
+    }
+
+    // --- 3. Função Principal de Cálculo da Margem ---
+    function calculateContributionMargin() {
+        const saleValue = parseFloat(saleValueInput.value) || 0;
+        const shippingCost = parseFloat(shippingCostInput.value) || 0;
+        const unitCost = parseFloat(unitCostInput.value) || 0;
+        const quantity = parseFloat(quantityInput.value) || 1;
+        const promoDiscount = parseFloat(promoDiscountInput.value) || 0;
+        const commissionDiscountValue = parseFloat(commissionDiscountInput.value) || 0;
+
+        const selectedExposure = exposureTypeSelect.value;
+        const currentFees = MARKETPLACE_FEES[selectedExposure];
+
+        if (selectedExposure === 'Offline') {
+            commissionInputContainer.classList.remove('commission-input-hidden');
+            commissionDisplayContainer.classList.add('commission-display-hidden');
+        } else {
+            commissionInputContainer.classList.add('commission-input-hidden');
+            commissionDisplayContainer.classList.remove('commission-display-hidden');
+        }
+
+        // --- Lógica do Imposto ---
+        let taxValue = 0;
+        let taxInputAsNumber = parseFloat(taxInput.value) || 0;
+        if (taxInputType === 'percent') {
+            taxValue = (taxInputAsNumber / 100) * saleValue;
+        } else {
+            taxValue = taxInputAsNumber;
+        }
+
+        // --- Lógica da Tarifa ---
+        let commissionPercentage = 0;
+        let fixedFee = 0;
+        
+        if (selectedExposure === 'Offline') {
+            commissionValue = parseFloat(commissionInput.value) || 0;
+            if (commissionInputType === 'percent') {
+                commissionValue = (commissionValue / 100) * saleValue;
+            }
+            fixedFee = 0;
+        } else {
+            commissionValue = (currentFees.commission_percentage / 100) * saleValue;
+            commissionPercentage = currentFees.commission_percentage;
+            fixedFee = currentFees.fixed_fee;
+        }
+        
+        // --- Aplicando o desconto em R$ na tarifa total ---
+        const totalCommissionFee = commissionValue + fixedFee;
+        const finalCommissionFee = totalCommissionFee - commissionDiscountValue;
+        
+        const effectiveSaleValue = saleValue * (1 - (promoDiscount / 100));
+        const totalCosts = (unitCost * quantity) + shippingCost + taxValue + finalCommissionFee;
+        const margin = effectiveSaleValue - totalCosts;
+
+        const marginPercentage = (effectiveSaleValue > 0) ? (margin / effectiveSaleValue) * 100 : 0;
+
+        // --- Atualizar a Interface ---
+        taxValueDisplay.value = `R$ ${taxValue.toFixed(2)}`;
+
+        fixedFeeDisplay.textContent = `+ Tarifa Fixa R$ ${fixedFee.toFixed(2)}`;
+        
+        commissionValueDisplay.textContent = `R$ ${(finalCommissionFee).toFixed(2)}`;
+        commissionPercentageDisplay.textContent = `${(commissionPercentage).toFixed(2)}%`;
+        
+        marginValueDisplay.textContent = `R$ ${margin.toFixed(2)}`;
+        marginPercentageDisplay.textContent = `${marginPercentage.toFixed(2)}%`;
+
+        marginValueDisplay.classList.toggle('negative', margin < 0);
+        marginPercentageDisplay.classList.toggle('negative', margin < 0);
+        marginValueDisplay.classList.toggle('positive', margin >= 0);
+        marginPercentageDisplay.classList.toggle('positive', margin >= 0);
+    }
+
+    // --- 4. Configuração dos Event Listeners ---
+    themeToggleButton.addEventListener('click', toggleTheme);
+
+    const inputsToWatch = [
+        saleValueInput, shippingCostInput, unitCostInput, quantityInput,
+        taxInput, commissionInput, promoDiscountInput, commissionDiscountInput
+    ];
+
+    inputsToWatch.forEach(input => {
+        input.addEventListener('input', calculateContributionMargin);
+    });
+
+    exposureTypeSelect.addEventListener('change', calculateContributionMargin);
+    
+    taxTypeToggle.addEventListener('click', () => {
+        taxInputType = (taxInputType === 'percent') ? 'value' : 'percent';
+        taxTypeToggle.textContent = (taxInputType === 'percent') ? '%' : 'R$';
+        taxInput.value = '';
+        taxInput.placeholder = (taxInputType === 'percent') ? '12.60' : '0.00';
+        calculateContributionMargin();
+    });
+    
+    commissionTypeToggle.addEventListener('click', () => {
+        commissionInputType = (commissionInputType === 'percent') ? 'value' : 'percent';
+        commissionTypeToggle.textContent = (commissionInputType === 'percent') ? '%' : 'R$';
+        commissionInput.placeholder = (commissionInputType === 'percent') ? '0.00' : '0.00';
+        calculateContributionMargin();
+    });
+
+
+    // --- 5. Inicialização da Aplicação ---
+    applyTheme();
+    calculateContributionMargin();
+});
