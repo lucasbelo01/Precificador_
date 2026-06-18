@@ -13,7 +13,7 @@
     <div class="app-container">
         <header class="app-header">
             <div class="logo">
-                <div class="logo-icon">LB</div>
+                <img src="Prancheta 13.jpg" alt="Logo Precificador" class="logo-img">
                 <h1>PRECIFICADOR <span>LB</span></h1>
             </div>
             <nav class="tabs">
@@ -45,21 +45,21 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Preço de Venda (R$)</label>
-                                <input type="number" id="r_venda" value="100.00" step="0.01">
+                                <input type="number" id="r_venda" value="72.99" step="0.01">
                             </div>
                             <div class="form-group">
                                 <label>Custo Unitário (R$)</label>
-                                <input type="number" id="r_custo" value="40.00" step="0.01">
+                                <input type="number" id="r_custo" value="36.64" step="0.01">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Frete Pago (R$)</label>
-                                <input type="number" id="r_frete" value="0.00" step="0.01">
+                                <input type="number" id="r_frete" value="8.55" step="0.01">
                             </div>
                             <div class="form-group">
                                 <label>Impostos (%)</label>
-                                <input type="number" id="r_imposto" value="12,60" step="0.01">
+                                <input type="number" id="r_imposto" value="12.60" step="0.01">
                             </div>
                         </div>
                     </div>
@@ -90,78 +90,4 @@
                 </div>
                 
                 <div class="grid-layout">
-                    <div class="input-panel card">
-                        <div class="form-group">
-                            <label>Canal de Venda</label>
-                            <select id="i_canal">
-                                <option value="Classico">Mercado Livre (Clássico)</option>
-                                <option value="Premium">Mercado Livre (Premium)</option>
-                                <option value="Shopee">Shopee</option>
-                                <option value="Direta">Venda Direta</option>
-                            </select>
-                        </div>
-                        <div class="form-group highlight-input">
-                            <label>Margem Desejada (%)</label>
-                            <input type="number" id="i_margem_alvo" value="20.00" step="0.01">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Custo Unitário (R$)</label>
-                                <input type="number" id="i_custo" value="40.00" step="0.01">
-                            </div>
-                            <div class="form-group">
-                                <label>Frete (R$)</label>
-                                <input type="number" id="i_frete" value="0.00" step="0.01">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Impostos (%)</label>
-                            <input type="number" id="i_imposto" value="12,60" step="0.01">
-                        </div>
-                    </div>
-
-                    <div class="result-panel card target-panel">
-                        <h3>Preço de Venda Sugerido</h3>
-                        <div class="massive-result" id="i_res_preco">R$ 0,00</div>
-                        <p class="subtitle">Ao vender por este valor, você garante exatamente <span id="i_res_margem_txt">20%</span> de lucro líquido.</p>
-                        <hr>
-                        <div class="breakdown">
-                            <div class="breakdown-item"><span>Lucro Líquido:</span> <span id="i_res_lucro">R$ 0,00</span></div>
-                            <div class="breakdown-item"><span>Total em Taxas:</span> <span id="i_res_taxa">R$ 0,00</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="tab-compare" class="tab-content">
-                <div class="section-header">
-                    <h2>Panorama de Canais</h2>
-                    <p>Qual preço praticar em cada plataforma para manter a mesma rentabilidade?</p>
-                </div>
-
-                <div class="compare-controls card">
-                    <div class="form-row align-center">
-                        <div class="form-group">
-                            <label>Margem Desejada Global (%)</label>
-                            <input type="number" id="c_margem_alvo" value="20.00" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>Custo Total (Custo + Frete) R$</label>
-                            <input type="number" id="c_custo" value="40.00" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>Imposto Base (%)</label>
-                            <input type="number" id="c_imposto" value="6.00" step="0.01">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="compare-grid" id="compare-container">
-                    </div>
-            </section>
-
-        </main>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+                    <div
