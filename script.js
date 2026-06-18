@@ -1,4 +1,4 @@
-// CONFIGURAÇÃO DE TAXAS (MERCADO LIVRE E SHOPEE ATUALIZADAS)
+// CONFIGURAÇÃO DE TAXAS (MERCADO LIVRE ATUALIZADO E SHOPEE)
 const FEES = {
     'Classico': { percent: 0.12 },
     'Premium':  { percent: 0.17 },
@@ -6,7 +6,7 @@ const FEES = {
     'Direta':   { percent: 0.05, fixo: 0 }
 };
 
-// Lógica de Taxas por Canal e Preço
+// Lógica de Taxas por Canal e Preço (Corrigida 2026 - ML sem Tarifa Fixa)
 function getFeeStructure(canal, price) {
     if (canal === 'Direta') return { percent: FEES.Direta.percent, fixed: FEES.Direta.fixo, dynFix: 0 };
     
@@ -15,11 +15,10 @@ function getFeeStructure(canal, price) {
     let dynFix = 0;
 
     if (canal === 'Classico' || canal === 'Premium') {
-        if (price < 12.50) dynFix = price * 0.50;
-        else if (price < 29.00) fixed = 6.25;
-        else if (price < 50.00) fixed = 6.50;
-        else if (price < 79.00) fixed = 6.75;
-        else fixed = 0;
+        // ML Atualizado: Custo puramente percentual. 
+        // Os custos de tabela de peso entram no campo 'Frete' de forma operacional.
+        fixed = 0;
+        dynFix = 0;
     }
     
     if (canal === 'Shopee') {
@@ -50,11 +49,8 @@ function calcIdealPrice(custo, frete, impostoPerc, margemPerc, canal) {
         addCandidato(FEES.Direta.percent, 0, 0, Infinity);
     } else if (canal === 'Classico' || canal === 'Premium') {
         let p = FEES[canal].percent;
-        addCandidato(p, 0, 0.01, 12.49, 0.50);
-        addCandidato(p, 6.25, 12.50, 28.99);
-        addCandidato(p, 6.50, 29.00, 49.99);
-        addCandidato(p, 6.75, 50.00, 78.99);
-        addCandidato(p, 0, 79.00, Infinity);
+        // Mercado Livre sem degraus de tarifa fixa, apenas comissão percentual contínua
+        addCandidato(p, 0, 0.01, Infinity);
     } else if (canal === 'Shopee') {
         addCandidato(0.20, 0, 0.01, 7.99, 0.50);
         addCandidato(0.20, 4.00, 8.00, 79.99);
@@ -104,7 +100,7 @@ function updateIdeal() {
 
     let precoIdeal = calcIdealPrice(custo, frete, impostoP, margemAlvo, canal);
     
-    // Recalcular para provar
+    // Recalcular para exibir na tela o detalhamento exato
     let feeStr = getFeeStructure(canal, precoIdeal);
     let taxaVenda = (precoIdeal * feeStr.percent) + feeStr.fixed + feeStr.dynFix;
     let lucroEsperado = precoIdeal * (margemAlvo / 100);
@@ -162,12 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Listeners de Input
+    // Listeners de Input para recalcular em tempo real
     document.querySelectorAll('#tab-reversa input, #tab-reversa select').forEach(el => el.addEventListener('input', updateReversa));
     document.querySelectorAll('#tab-ideal input, #tab-ideal select').forEach(el => el.addEventListener('input', updateIdeal));
     document.querySelectorAll('#tab-compare input').forEach(el => el.addEventListener('input', updateComparador));
 
-    // Init
+    // Inicialização da interface
     updateReversa();
     updateIdeal();
     updateComparador();
