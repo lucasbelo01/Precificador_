@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precificador Mk 3.0</title>
+    <title>Precificador Mk 3.0 - Pro</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,108 +15,91 @@
                 <h1>PRECIFICADOR MK 3.0</h1>
             </div>
             <div class="header-social-links">
-                <a href="https://github.com/lucasbelo01" target="_blank" rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" class="social-icon">
-                </a>
-                <a href="https://www.instagram.com/bucaslelo" target="_blank" rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" class="social-icon">
-                </a>
+                <button id="themeToggle" class="theme-toggle-button">Tema Escuro</button>
             </div>
-            <button id="themeToggle" class="theme-toggle-button">Alternar Tema</button>
         </header>
 
-        <section class="calc-section">
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'tab-reversa')">Simular Venda</button>
+            <button class="tab-button" onclick="openTab(event, 'tab-ideal')">Preço Ideal</button>
+            <button class="tab-button" onclick="openTab(event, 'tab-compare')">Comparativo</button>
+        </div>
+
+        <section id="tab-reversa" class="calc-section tab-content active">
             <div class="input-group highlight-bg">
-                <label for="exposureType">Tipo de Exposição do Anúncio:</label>
+                <label for="exposureType">Canal de Venda:</label>
                 <select id="exposureType">
                     <option value="Offline">Venda Direta</option>
-                    <option value="Classico">Exposição Atual (Clássico)</option>
-                    <option value="Premium">Premium (Mercado Livre)</option>
+                    <option value="Classico">Mercado Livre (Clássico)</option>
+                    <option value="Premium">Mercado Livre (Premium)</option>
                     <option value="Shopee">Shopee</option>
                 </select>
             </div>
-
             <div class="input-row">
-                <div class="input-group">
-                    <label>Valor De Venda</label>
-                    <input type="number" id="saleValue" value="" step="0.01" placeholder="0.00">
-                </div>
+                <div class="input-group"><label>Preço de Venda (R$)</label><input type="number" id="r_saleValue" step="0.01" value="100.00"></div>
+                <div class="input-group"><label>Custo Unitário (R$)</label><input type="number" id="r_unitCost" step="0.01" value="30.00"></div>
             </div>
             <div class="input-row">
-                <div class="input-group">
-                    <label>Frete (-)</label>
-                    <input type="number" id="shippingCost" value="" step="0.01" placeholder="0.00">
-                </div>
-            </div>
-            <div class="input-row align-items-center">
-                <div class="input-group">
-                    <label>Custo Unitário (-)</label>
-                    <input type="number" id="unitCost" value="" step="0.01" placeholder="0.00">
-                </div>
-                <div class="input-group quantity-group">
-                    <label>Quantidade</label>
-                    <input type="number" id="quantity" value="1" step="1" min="1">
-                </div>
+                <div class="input-group"><label>Frete Pago pelo Vendedor (R$)</label><input type="number" id="r_shipping" step="0.01" value="0.00"></div>
+                <div class="input-group"><label>Impostos (%)</label><input type="number" id="r_taxPerc" step="0.01" value="6.00"></div>
             </div>
             
-            <div class="input-row align-items-center">
-                <div class="input-group">
-                    <label>Imposto (-)</label>
-                    <div class="input-with-toggle">
-                        <input type="number" id="taxInput" value="12.60" step="0.01" placeholder="0.00">
-                        <span id="taxTypeToggle" class="toggle-button" data-type="percent">%</span>
-                    </div>
-                </div>
-                <div class="percentage-display-value">
-                    <input type="text" id="taxValueDisplay" value="R$ 0.00" readonly>
-                </div>
-            </div>
-
-            <div class="input-row align-items-center" id="commissionRow">
-                <div class="input-group full-width-input">
-                    <label>Tarifa De Venda (-)</label>
-                    <span id="fixedFeeDisplay" class="fixed-fee-text">+ Tarifa Fixa R$ 0.00</span>
-                    <div id="commissionInputContainer" class="input-with-toggle">
-                        <input type="number" id="commissionInput" value="" step="0.01" placeholder="0.00">
-                        <span id="commissionTypeToggle" class="toggle-button" data-type="value">R$</span>
-                    </div>
-                    <div id="commissionDisplayContainer" class="commission-display">
-                        <span id="commissionValueDisplay" class="commission-value-display">R$ 0.00</span>
-                        <span id="commissionPercentageDisplay" class="commission-percentage-display">0.00%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="commissionDiscount">Desconto na Tarifa (R$):</label>
-                    <input type="number" id="commissionDiscount" value="" step="0.01" placeholder="0.00">
-                </div>
-            </div>
-
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="promoDiscount">Desconto Promoção (%):</label>
-                    <input type="number" id="promoDiscount" value="" step="0.01" placeholder="0.00">
-                </div>
-            </div>
-
-            <div class="result-box">
-                <p>Margem De Contribuição (=)</p>
-                <p class="highlight" id="marginValue">R$ 0.00</p>
-                <p class="highlight-percentage" id="marginPercentage">0.00%</p>
+            <div class="metrics-box">
+                <p>Taxas do Canal: <span id="r_channelFees">R$ 0.00</span></p>
+                <p>Impostos: <span id="r_taxValue">R$ 0.00</span></p>
+                <hr>
+                <p>Lucro Líquido (=)</p>
+                <h2 class="highlight" id="r_marginValue">R$ 0.00</h2>
+                <h3 class="highlight-percentage" id="r_marginPerc">0.00%</h3>
             </div>
         </section>
 
-        <footer>
-            <div class="developer-balloon">Desenvolvido por Lucas Belo</div>
-            <div class="social-links">
-                <a href="mailto:lucasbeloddd15@gmail.com">Email</a>
-                <a href="https://www.linkedin.com/in/lucasbelocarvalho15?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <section id="tab-ideal" class="calc-section tab-content" style="display:none;">
+            <div class="input-group highlight-bg">
+                <label for="i_exposureType">Canal Alvo:</label>
+                <select id="i_exposureType">
+                    <option value="Offline">Venda Direta</option>
+                    <option value="Classico">Mercado Livre (Clássico)</option>
+                    <option value="Premium">Mercado Livre (Premium)</option>
+                    <option value="Shopee">Shopee</option>
+                </select>
             </div>
-        </footer>
-    </div>
+            <div class="input-row">
+                <div class="input-group"><label>Margem Desejada (%)</label><input type="number" id="i_targetMargin" step="0.01" value="20.00"></div>
+                <div class="input-group"><label>Custo Unitário (R$)</label><input type="number" id="i_unitCost" step="0.01" value="30.00"></div>
+            </div>
+            <div class="input-row">
+                <div class="input-group"><label>Frete Fixo (R$)</label><input type="number" id="i_shipping" step="0.01" value="0.00"></div>
+                <div class="input-group"><label>Impostos (%)</label><input type="number" id="i_taxPerc" step="0.01" value="6.00"></div>
+            </div>
 
+            <div class="metrics-box">
+                <p>Sugestão de Preço de Venda (=)</p>
+                <h2 class="highlight" id="i_suggestedPrice">R$ 0.00</h2>
+                <p class="subtext">Para atingir exatos <span id="i_displayTarget">0%</span> de lucro líquido.</p>
+            </div>
+        </section>
+
+        <section id="tab-compare" class="calc-section tab-content" style="display:none;">
+            <div class="input-row">
+                <div class="input-group"><label>Margem Desejada (%)</label><input type="number" id="c_targetMargin" step="0.01" value="20.00"></div>
+                <div class="input-group"><label>Custo Total Base (R$)</label><input type="number" id="c_unitCost" step="0.01" value="30.00"></div>
+            </div>
+            <table class="comparison-table" id="comparisonTable">
+                <thead>
+                    <tr>
+                        <th>Canal</th>
+                        <th>Preço Sugerido</th>
+                        <th>Taxas Totais</th>
+                        <th>Lucro R$</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
